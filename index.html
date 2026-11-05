@@ -1,0 +1,786 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gota Consciente | Economize Água</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f9ff;
+            color: #123047;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #075985;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h2 {
+            font-size: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #7dd3fc;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0284c7, #075985);
+            color: white;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .botao {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 28px;
+            background: #facc15;
+            color: #123047;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            background: #fde047;
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 60px 8%;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #075985;
+        }
+
+        .persona {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 5px 20px #00000010;
+            text-align: center;
+        }
+
+        .gota {
+            font-size: 65px;
+        }
+
+        .persona h3 {
+            color: #0284c7;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .frase {
+            font-style: italic;
+            font-size: 20px;
+            color: #0369a1;
+            margin-top: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px #00000010;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #0284c7;
+            margin-bottom: 12px;
+        }
+
+        .card .icone {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .azul {
+            background: #e0f2fe;
+        }
+
+        .solucao {
+            background: #075985;
+            color: white;
+        }
+
+        .solucao h2 {
+            color: white;
+        }
+
+        .solucao .card {
+            color: #123047;
+        }
+
+        .desafio {
+            background: white;
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px #00000010;
+        }
+
+        .desafio button {
+            padding: 12px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            background: #0284c7;
+            color: white;
+            font-weight: bold;
+        }
+
+        .desafio button:hover {
+            background: #075985;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #0284c7;
+        }
+
+        .quiz {
+            background: #e0f2fe;
+        }
+
+        .quiz-box {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .quiz-box button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #bae6fd;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .quiz-box button:hover {
+            background: #e0f2fe;
+        }
+
+        #feedback {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        footer {
+            background: #082f49;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 40px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>💧 Gota Consciente</h2>
+
+    <nav>
+        <a href="#persona">Persona</a>
+        <a href="#problema">Problema</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#desafio">Desafio</a>
+        <a href="#quiz">Quiz</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <h1>Pequenas atitudes.<br>Grandes mudanças.</h1>
+
+    <p>
+        A água é essencial para a vida.
+        Descubra como atitudes simples podem combater
+        o desperdício e proteger o nosso planeta.
+    </p>
+
+    <a href="#problema" class="botao">
+        Descubra como ajudar
+    </a>
+</div>
+
+<section id="persona">
+    <h2>Conheça nossa persona</h2>
+
+    <div class="persona">
+        <div class="gota">💧</div>
+
+        <h3>João Pedro</h3>
+
+        <p><strong>Idade:</strong> 16 anos</p>
+        <p><strong>Ocupação:</strong> Estudante do ensino médio</p>
+
+        <p>
+            João Pedro é um aluno desatento que costuma
+            deixar torneiras abertas, demora no banho
+            e não se preocupa com vazamentos.
+        </p>
+
+        <p>
+            Ele ainda não percebe como suas atitudes
+            podem prejudicar o meio ambiente e a sociedade.
+        </p>
+
+        <p class="frase">
+            "Tem tanta água no mundo, por que preciso economizar?"
+        </p>
+    </div>
+</section>
+
+<section id="problema" class="azul">
+    <h2>Quem sente esse problema?</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icone">🎓</div>
+            <h3>Alunos</h3>
+            <p>
+                Desperdiçam água e muitas vezes
+                não percebem as consequências.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">📚</div>
+            <h3>Professores</h3>
+            <p>
+                Precisam conscientizar os estudantes
+                sobre a preservação da água.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">🏫</div>
+            <h3>Diretores</h3>
+            <p>
+                Enfrentam gastos maiores com
+                as contas de água da escola.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">🧹</div>
+            <h3>Funcionários</h3>
+            <p>
+                Podem encontrar dificuldades
+                durante a limpeza e manutenção.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">👨‍👩‍👧</div>
+            <h3>Famílias</h3>
+            <p>
+                Sentem o impacto do desperdício
+                no orçamento doméstico.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">🌎</div>
+            <h3>Comunidade</h3>
+            <p>
+                Pode sofrer com a falta de água,
+                principalmente em períodos de seca.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">🌱</div>
+            <h3>Meio ambiente</h3>
+            <p>
+                Rios, lagos, plantas e animais
+                sofrem com a degradação ambiental.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icone">🔮</div>
+            <h3>Futuras gerações</h3>
+            <p>
+                Podem enfrentar maior dificuldade
+                para encontrar água potável.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <h2>Quando o desperdício acontece?</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🏫 Na escola</h3>
+            <p>
+                Torneiras abertas após lavar as mãos
+                e brincadeiras com água.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🏠 Em casa</h3>
+            <p>
+                Banhos demorados, torneiras abertas
+                e lavagem de louça sem necessidade.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🚗 Nas ruas</h3>
+            <p>
+                Lavagem de calçadas e carros
+                com mangueiras continuamente abertas.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🚰 Locais públicos</h3>
+            <p>
+                Torneiras quebradas e vazamentos
+                que demoram para ser consertados.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="azul">
+    <h2>Consequências do desperdício</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🚱 Falta de água</h3>
+            <p>
+                Menos água disponível para
+                atender às necessidades da população.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🌳 Impactos ambientais</h3>
+            <p>
+                Degradação de rios, lagos
+                e nascentes.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>💰 Gastos maiores</h3>
+            <p>
+                O consumo excessivo aumenta
+                as contas de água.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🐟 Prejuízos à natureza</h3>
+            <p>
+                Animais e plantas podem sofrer
+                com a redução da água disponível.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <h2>O que já foi tentado?</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>📢 Campanhas</h3>
+            <p>
+                Informam sobre a importância da água,
+                mas nem sempre mudam os hábitos.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🪧 Cartazes</h3>
+            <p>
+                Alertam sobre o desperdício,
+                mas podem passar despercebidos.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🚰 Avisos</h3>
+            <p>
+                Lembram as pessoas de fechar
+                as torneiras, mas o esquecimento continua.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🔧 Consertos</h3>
+            <p>
+                Evitam perdas por vazamentos,
+                mas precisam acontecer rapidamente.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="solucoes" class="solucao">
+    <h2>Como podemos resolver?</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🚿 Banhos conscientes</h3>
+            <p>
+                Reduza o tempo do banho
+                e desligue o chuveiro ao se ensaboar.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🪥 Feche a torneira</h3>
+            <p>
+                Feche a torneira ao escovar os dentes
+                ou ensaboar as mãos.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🔍 Identifique vazamentos</h3>
+            <p>
+                Avise um responsável quando perceber
+                uma torneira pingando.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>📣 Conscientize</h3>
+            <p>
+                Compartilhe dicas com colegas,
+                professores e familiares.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="desafio">
+    <h2>Desafio da Gota 💧</h2>
+
+    <div class="desafio">
+
+        <p>
+            Você consegue escolher hábitos
+            que ajudam a economizar água?
+        </p>
+
+        <p>
+            Clique para assumir um compromisso
+            sustentável!
+        </p>
+
+        <button onclick="escolherDesafio(0)">
+            Fechar a torneira ao escovar os dentes
+        </button>
+
+        <button onclick="escolherDesafio(1)">
+            Tomar banhos mais conscientes
+        </button>
+
+        <button onclick="escolherDesafio(2)">
+            Avisar sobre vazamentos
+        </button>
+
+        <div id="resultado"></div>
+
+    </div>
+</section>
+
+<section id="quiz" class="quiz">
+    <h2>Quiz: Você é consciente?</h2>
+
+    <div class="quiz-box">
+
+        <h3 id="pergunta">
+            Qual atitude ajuda a economizar água?
+        </h3>
+
+        <button onclick="responder(0)">
+            Deixar a torneira aberta
+        </button>
+
+        <button onclick="responder(1)">
+            Fechar a torneira ao escovar os dentes
+        </button>
+
+        <button onclick="responder(2)">
+            Demorar mais no banho
+        </button>
+
+        <p id="feedback"></p>
+
+        <p id="pontuacao">
+            Pontuação: 0
+        </p>
+
+        <button onclick="reiniciarQuiz()">
+            Reiniciar quiz
+        </button>
+
+    </div>
+</section>
+
+<footer>
+    <h3>💧 Gota Consciente</h3>
+
+    <p>
+        Cada gota conta. Faça sua parte!
+    </p>
+
+    <p>
+        Projeto educativo sobre o desperdício de água.
+    </p>
+</footer>
+
+<script>
+    // DESAFIO INTERATIVO
+
+    function escolherDesafio(opcao) {
+
+        const mensagens = [
+            "Excelente! Fechar a torneira evita desperdícios.",
+            "Muito bem! Banhos conscientes ajudam a economizar.",
+            "Ótima atitude! Vazamentos precisam ser comunicados."
+        ];
+
+        document.getElementById("resultado").innerText =
+            mensagens[opcao];
+    }
+
+
+    // QUIZ INTERATIVO
+
+    let pontos = 0;
+    let perguntaAtual = 0;
+
+    const perguntas = [
+        {
+            pergunta: "Qual atitude ajuda a economizar água?",
+            respostas: [
+                "Deixar a torneira aberta",
+                "Fechar a torneira ao escovar os dentes",
+                "Demorar mais no banho"
+            ],
+            correta: 1
+        },
+
+        {
+            pergunta: "O que fazer ao perceber um vazamento?",
+            respostas: [
+                "Ignorar o problema",
+                "Deixar a água correr",
+                "Avisar um responsável"
+            ],
+            correta: 2
+        },
+
+        {
+            pergunta: "Por que devemos economizar água?",
+            respostas: [
+                "Para preservar esse recurso essencial",
+                "Porque a água não tem utilidade",
+                "Para aumentar o desperdício"
+            ],
+            correta: 0
+        }
+    ];
+
+
+    function responder(resposta) {
+
+        const feedback = document.getElementById("feedback");
+
+        if (resposta === perguntas[perguntaAtual].correta) {
+
+            pontos++;
+
+            feedback.innerText =
+                "Muito bem! Resposta correta! 💧";
+
+        } else {
+
+            feedback.innerText =
+                "Ops! Vamos aprender a economizar água.";
+        }
+
+        document.getElementById("pontuacao").innerText =
+            "Pontuação: " + pontos;
+
+        perguntaAtual++;
+
+        if (perguntaAtual < perguntas.length) {
+
+            setTimeout(() => {
+
+                mostrarPergunta();
+
+            }, 1000);
+
+        } else {
+
+            setTimeout(() => {
+
+                document.getElementById("pergunta").innerText =
+                    "Quiz finalizado!";
+
+                document.querySelectorAll(".quiz-box button")
+                    .forEach(botao => {
+                        if (botao.innerText !== "Reiniciar quiz") {
+                            botao.style.display = "none";
+                        }
+                    });
+
+                feedback.innerText =
+                    "Você acertou " + pontos +
+                    " de " + perguntas.length +
+                    " perguntas! Continue economizando água!";
+
+            }, 1000);
+        }
+    }
+
+
+    function mostrarPergunta() {
+
+        document.getElementById("pergunta").innerText =
+            perguntas[perguntaAtual].pergunta;
+
+        const botoes = document.querySelectorAll(
+            ".quiz-box button"
+        );
+
+        for (let i = 0; i < 3; i++) {
+
+            botoes[i].innerText =
+                perguntas[perguntaAtual].respostas[i];
+
+        }
+
+        document.getElementById("feedback").innerText = "";
+    }
+
+
+    function reiniciarQuiz() {
+
+        pontos = 0;
+        perguntaAtual = 0;
+
+        document.querySelectorAll(".quiz-box button")
+            .forEach(botao => {
+                botao.style.display = "block";
+            });
+
+        document.getElementById("pontuacao").innerText =
+            "Pontuação: 0";
+
+        document.getElementById("feedback").innerText = "";
+
+        mostrarPergunta();
+    }
+
+</script>
+
+</body>
+</html>
